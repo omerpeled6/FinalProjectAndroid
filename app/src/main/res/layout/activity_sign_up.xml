@@ -12,15 +12,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="200px"
+        android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:text="Registration:"
-        android:textSize="28sp" />
+        android:text="looks like you are new here,"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/signupNow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:text="SIGN UP NOW!"
+        android:textColor="#6c38f6"
+        android:textSize="34sp" />
 
     <EditText
         android:id="@+id/user_name_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="250px"
+        android:minHeight="48dp"
         android:ems="10"
         android:hint="User name"
         android:inputType="text" />
@@ -30,6 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20px"
+        android:minHeight="48dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"/>
@@ -39,7 +52,51 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100px"
+        android:backgroundTint="#6c38f6"
         android:onClick="signUpFunc"
         android:text="sign up" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50px"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/haveAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:gravity="right"
+            android:text="dont have an account?" />
+
+        <TextView
+            android:id="@+id/hyperlink_signin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="48dp"
+            android:onClick="hyperlinkSignInFunc"
+            android:text=" Sign In"
+            android:textColor="#5986D5" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.7"
+        android:gravity="right"
+        android:text="already have an account?" />
+
+    <TextView
+        android:id="@+id/hyperlink_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:minHeight="48dp"
+        android:onClick="hyperlinkSignUpFunc"
+        android:text=" Sign In"
+        android:textColor="#5986D5" />
 
 </LinearLayout>

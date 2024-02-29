@@ -15,6 +15,7 @@
         android:fontFamily="sans-serif-black"
         android:gravity="center"
         android:text="WELCOME BACK!"
+        android:textColor="#6c38f6"
         android:textSize="34sp" />
 
     <EditText
@@ -22,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="250px"
+        android:minHeight="48dp"
         android:padding="8dp"
         android:ems="10"
         android:hint="Email"
@@ -32,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20px"
+        android:minHeight="48dp"
         android:padding="8dp"
         android:ems="10"
         android:hint="Password"
@@ -49,12 +52,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50px"
+        android:backgroundTint="#6c38f6"
         android:onClick="loginFunc"
         android:text="login" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50px"
         android:orientation="horizontal">
 
         <TextView
@@ -70,15 +75,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text=" Sign Up" />
+            android:minHeight="48dp"
+            android:onClick="hyperlinkSignUpFunc"
+            android:text=" Sign Up"
+            android:textColor="#5986D5" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/regButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20px"
-        android:onClick="regFunc"
-        android:text="register" />
 
 </LinearLayout>

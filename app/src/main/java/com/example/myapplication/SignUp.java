@@ -48,5 +48,9 @@ public class SignUp extends AppCompatActivity {
                     }
                 });
     }
+    public void hyperlinkSignInFunc(View view) {
+        Intent intent = new Intent(SignUp.this, SignIn.class);
+        startActivity(intent);
+    }
 
 }

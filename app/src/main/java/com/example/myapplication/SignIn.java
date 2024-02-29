@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,8 +27,6 @@ public class SignIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         mAuth = FirebaseAuth.getInstance();
-        //TextView t2 = (TextView) findViewById(R.id.hyperlink_signup);
-        //t2.setMovementMethod(LinkMovementMethod.getInstance());
     }
     public void loginFunc(View view) {
 
@@ -52,7 +52,12 @@ public class SignIn extends AppCompatActivity {
                 });
     }
 
-    public void regFunc(View view) {
+    /*public void regFunc(View view) {
+        Intent intent = new Intent(SignIn.this, SignUp.class);
+        startActivity(intent);
+    }*/
+
+    public void hyperlinkSignUpFunc(View view) {
         Intent intent = new Intent(SignIn.this, SignUp.class);
         startActivity(intent);
     }
