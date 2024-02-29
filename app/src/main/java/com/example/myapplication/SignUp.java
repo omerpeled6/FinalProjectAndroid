@@ -36,13 +36,13 @@ public class SignUp extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Toast.makeText(SignUp.this,"res ok",Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignUp.this,"now you are signed up please sign in",Toast.LENGTH_LONG).show();
                             FirebaseUser user = mAuth.getCurrentUser();
                             Intent intent = new Intent(SignUp.this, com.example.myapplication.SignIn.class);
                             startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(SignUp.this,"res fail",Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignUp.this,"something has failed",Toast.LENGTH_LONG).show();
 
                         }
                     }

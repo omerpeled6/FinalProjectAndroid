@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,6 +25,8 @@ public class SignIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         mAuth = FirebaseAuth.getInstance();
+        //TextView t2 = (TextView) findViewById(R.id.hyperlink_signup);
+        //t2.setMovementMethod(LinkMovementMethod.getInstance());
     }
     public void loginFunc(View view) {
 
@@ -38,9 +42,11 @@ public class SignIn extends AppCompatActivity {
 
                             Toast.makeText(SignIn.this,"login ok",Toast.LENGTH_LONG).show();
                             FirebaseUser user = mAuth.getCurrentUser();
+                            Intent intent = new Intent(SignIn.this, com.example.myapplication.MainActivity.class);
+                            startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(SignIn.this,"login fail",Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignIn.this,"please try again",Toast.LENGTH_LONG).show();
                         }
                     }
                 });
