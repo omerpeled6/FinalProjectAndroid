@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:id="@+id/toolbar"
-        android:background="@color/purple"
+        android:background="@color/lavender"
         app:title="Park and Go"
         app:titleMarginStart="30dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"

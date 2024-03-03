@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activitys.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -27,8 +28,8 @@ public class SignIn extends AppCompatActivity {
     }
     public void loginFunc(View view) {
 
-        String email=((EditText) findViewById(R.id.user_name_text)).getText().toString().trim();
-        String password=((EditText) findViewById(R.id.password_text)).getText().toString().trim();
+        String email=((EditText) findViewById(R.id.login_username)).getText().toString().trim();
+        String password=((EditText) findViewById(R.id.login_password)).getText().toString().trim();
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -49,10 +50,6 @@ public class SignIn extends AppCompatActivity {
                 });
     }
 
-    /*public void regFunc(View view) {
-        Intent intent = new Intent(SignIn.this, SignUp.class);
-        startActivity(intent);
-    }*/
 
     public void hyperlinkSignUpFunc(View view) {
         Intent intent = new Intent(SignIn.this, SignUp.class);
