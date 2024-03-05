@@ -7,18 +7,11 @@
     android:orientation="vertical"
     tools:context=".mains.MainActivity">
 
-    <SearchView
-        android:id="@+id/search"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView2"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.9"
-        android:inputType="text|textMultiLine"
-        android:imeOptions="actionSearch"
-        android:background="#5968B6" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/resview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.1" />
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/navgraph" />
 </LinearLayout>
