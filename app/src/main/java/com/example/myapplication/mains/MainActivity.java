@@ -17,11 +17,11 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<ParkingLot> dataSet; //המערך רשומות
+    /*private ArrayList<ParkingLot> dataSet; //המערך רשומות
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager; //ההגדרות שלו (למעלה למטה\שמאל ימין)
     private ParkingLotAdapter adapter;
-    private SearchView searchView;
+    private SearchView searchView;*/
 
 
     @Override
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //build rv:
+       /* //build rv:
         dataSet = new ArrayList<>();
         recyclerView = findViewById(R.id.resview);
         linearLayoutManager = new LinearLayoutManager(this);
@@ -55,10 +55,11 @@ public class MainActivity extends AppCompatActivity {
                 filter(newText); // Implement your filtering logic
                 return true;
             }
-        });
+        });*/
     }
 
-    private void filter(String query) {
+    /*private void filter(String query) {
+
         adapter.getFilter().filter(query);
-    }
+    }*/
 }

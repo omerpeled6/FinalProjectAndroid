@@ -35,7 +35,7 @@ public class ParkingLotAdapter extends RecyclerView.Adapter<ParkingLotAdapter.My
     @Override
     public ParkingLotAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) { //יוצר אצ הקארד
 
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.cardlayout, parent,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_card_layout, parent,false);
         MyViewHolder myViewHolder=new MyViewHolder(view);
 
         return myViewHolder;
@@ -52,6 +52,7 @@ public class ParkingLotAdapter extends RecyclerView.Adapter<ParkingLotAdapter.My
 
     @Override
     public int getItemCount() {
+
         return dataset.size();
     }
 
