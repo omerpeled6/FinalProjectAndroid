@@ -1,122 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="20px"
-    android:layout_marginRight="20px"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/pagebkg"
+    tools:context=".activitys.SignUp">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <TextView
-        android:id="@+id/textView"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20px"
-        android:layout_marginTop="200px"
-        android:layout_marginRight="20px"
-        android:fontFamily="sans-serif-black"
-        android:gravity="center"
-        android:text="looks like you are new here,"
-        android:textSize="20sp" />
+        android:layout_margin="30dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
 
-    <TextView
-        android:id="@+id/signupNow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20px"
-        android:layout_marginRight="20px"
-        android:fontFamily="sans-serif-black"
-        android:gravity="center"
-        android:text="SIGN UP NOW!"
-        android:textColor="#6c38f6"
-        android:textSize="34sp" />
-
-    <EditText
-        android:id="@+id/user_name_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20px"
-        android:layout_marginTop="250px"
-        android:layout_marginRight="20px"
-        android:ems="10"
-        android:hint="User name"
-        android:inputType="text"
-        android:minHeight="48dp" />
-
-    <EditText
-        android:id="@+id/password_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20px"
-        android:layout_marginTop="20px"
-        android:layout_marginRight="20px"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:minHeight="48dp" />
-
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20px"
-        android:layout_marginTop="100px"
-        android:layout_marginRight="20px"
-        android:backgroundTint="#6c38f6"
-        android:onClick="signUpFunc"
-        android:text="sign up" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="20px"
-        android:layout_marginTop="50px"
-        android:layout_marginRight="20px"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/haveAccount"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20px"
-            android:layout_weight="0.55"
-            android:gravity="right"
-            android:text="already have an account?" />
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:padding="24dp"
+            android:background="@drawable/lavender_border">
 
-        <TextView
-            android:id="@+id/hyperlink_signin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20px"
-            android:layout_weight="1"
-            android:minHeight="48dp"
-            android:onClick="hyperlinkSignInFunc"
-            android:text=" Sign In"
-            android:textColor="#5986D5" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="looks like you are new here,"
+                android:textAlignment="center"
+                android:textColor="@color/lavender"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20px"
-        android:layout_marginRight="20px"
-        android:layout_weight="0.7"
-        android:gravity="right"
-        android:text="already have an account?" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign Up Now!"
+                android:textAlignment="center"
+                android:textColor="@color/lavender"
+                android:textSize="36sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/hyperlink_signup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20px"
-        android:layout_marginRight="20px"
-        android:layout_weight="1"
-        android:minHeight="48dp"
-        android:onClick="hyperlinkSignUpFunc"
-        android:text=" Sign In"
-        android:textColor="#5986D5" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/signup_email"
+                android:background="@drawable/lavender_border"
+                android:layout_marginTop="20dp"
+                android:padding="8dp"
+                android:hint="Email"
+                android:drawableLeft="@drawable/ic_baseline_email_24"
+                android:minHeight="48dp"
+                android:drawablePadding="8dp"
+                android:textColor="@color/grey"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/signup_password"
+                android:background="@drawable/lavender_border"
+                android:layout_marginTop="20dp"
+                android:padding="8dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:drawableLeft="@drawable/ic_baseline_lock_24"
+                android:minHeight="48dp"
+                android:drawablePadding="8dp"
+                android:textColor="@color/black"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Sign Up"
+                android:id="@+id/signup_button"
+                android:textSize="18sp"
+                android:layout_marginTop="30dp"
+                android:onClick="signUpFunc"
+                app:cornerRadius = "20dp"/>
+
+            <TextView
+                android:id="@+id/loginRedirectText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:padding="8dp"
+                android:text="already have an account? Sign In"
+                android:minHeight="48dp"
+                android:textColor="@color/lavender"
+                android:textSize="18sp"
+                android:onClick="hyperlinkSignUpFunc"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

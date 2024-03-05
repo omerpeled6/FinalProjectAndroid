@@ -27,8 +27,8 @@ public class SignUp extends AppCompatActivity {
     }
 
     public void signUpFunc(View view) {
-        String email=((EditText) findViewById(R.id.user_name_text)).getText().toString().trim();
-        String password=((EditText) findViewById(R.id.password_text)).getText().toString().trim();
+        String email=((EditText) findViewById(R.id.signup_email)).getText().toString().trim();
+        String password=((EditText) findViewById(R.id.signup_password)).getText().toString().trim();
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
