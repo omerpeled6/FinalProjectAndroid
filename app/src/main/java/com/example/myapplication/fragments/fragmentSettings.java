@@ -2,9 +2,14 @@ package com.example.myapplication.fragments;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.CompoundButton;
+import com.google.android.material.switchmaterial.SwitchMaterial;
+import java.util.Objects;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +18,9 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import com.example.myapplication.R;
+import com.google.android.material.switchmaterial.SwitchMaterial;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,13 +70,6 @@ public class fragmentSettings extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        swithDarkMode=(Switch) getView().findViewById(R.id.swithDarkMode);
-        swithDarkMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // do something, the isChecked will be
-                // true if the switch is in the On position
-            }
-        });
     }
 
     @Override
@@ -76,6 +77,25 @@ public class fragmentSettings extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
+        // initialize variable
+        SwitchMaterial switchBtn = view.findViewById(R.id.switchBtn);
+        switchBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged (CompoundButton buttonView, boolean isChecked){
+
+                if (isChecked) {
+
+                    // setting theme to night mode
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+                }
+                else {
+
+                    // setting theme to light theme
+                    AppCompatDelegate.setDefaultNightMode (AppCompatDelegate.MODE_NIGHT_NO);
+                }
+            }
+        });
         return view;
     }
 
