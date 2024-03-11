@@ -3,17 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/pagebkg"
     android:orientation="vertical"
-    tools:context=".fragments.fragmentParkingLot" >
+    tools:context=".fragments.fragmentParkingLot">
 
     <SearchView
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.9"
-        android:inputType="text|textMultiLine"
+        android:layout_weight="1.5"
+        android:background="@drawable/lavender_border"
+        android:backgroundTint="#FFFFFF"
         android:imeOptions="actionSearch"
-        android:background="#5968B6" />
+        android:layoutDirection="rtl"
+        android:inputType="text|textMultiLine" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/resview"
