@@ -1,14 +1,13 @@
 {
   "project_info": {
-    "project_number": "325418203594",
-    "firebase_url": "https://finalproject-8fa25-default-rtdb.firebaseio.com",
-    "project_id": "finalproject-8fa25",
-    "storage_bucket": "finalproject-8fa25.appspot.com"
+    "project_number": "874565110105",
+    "project_id": "lecture7-51720",
+    "storage_bucket": "lecture7-51720.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:325418203594:android:fb2297628659b8f836b733",
+        "mobilesdk_app_id": "1:874565110105:android:e10495aeb4637c4412e448",
         "android_client_info": {
           "package_name": "com.example.myapplication"
         }
@@ -16,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDWoCsmpYZeRrVrAuY8bJkB4YEEXml0Dgc"
+          "current_key": "AIzaSyC_AGGBKWO6Ku53TORUCfmPtOMANai8K8U"
         }
       ],
       "services": {
