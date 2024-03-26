@@ -15,4 +15,9 @@
         android:name="com.example.myapplication.fragments.fragmentCardLayout"
         android:label="fragment_card_layout"
         tools:layout="@layout/fragment_card_layout" />
+    <fragment
+        android:id="@+id/fragmentInfoParking"
+        android:name="com.example.myapplication.fragmentInfoParking"
+        android:label="fragment_info_parking"
+        tools:layout="@layout/fragment_info_parking" />
 </navigation>

@@ -63,10 +63,10 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonShowComment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="buttonClicked"
+        android:onClick="buttonShowComment"
         android:text="buttonAddComment" />
 
     <androidx.recyclerview.widget.RecyclerView
