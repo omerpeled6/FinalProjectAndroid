@@ -37,9 +37,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id=item.getItemId();
-        if(id==R.id.settings){
-            Toast.makeText(this,"settings",Toast.LENGTH_SHORT).show();
-        }
         if(id==R.id.star){
             Toast.makeText(this,"star",Toast.LENGTH_SHORT).show();
         }
