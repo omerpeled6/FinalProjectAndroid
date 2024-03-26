@@ -5,8 +5,12 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.adapters.ParkingLotAdapter;
@@ -17,6 +21,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    Dialog commentPopup;  // add to popup
     private ArrayList<ParkingLot> dataSet; //המערך רשומות
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager; //ההגדרות שלו (למעלה למטה\שמאל ימין)
@@ -28,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // add to popup
+        commentPopup = new Dialog(this);
 
         //build rv:
         dataSet = new ArrayList<>();
@@ -60,5 +68,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void filter(String query) {
         adapter.getFilter().filter(query);
+    }
+
+
+    public void ShowPopup(View v) {
+        TextView txtclose;
+        Button btnAddComment;
+        commentPopup.setContentView(R.layout.custopopup);
+        txtclose = (TextView) commentPopup.findViewById(R.id.txtclose);
+
     }
 }
