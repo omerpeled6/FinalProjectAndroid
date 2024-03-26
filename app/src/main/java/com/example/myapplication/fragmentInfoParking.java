@@ -4,9 +4,15 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,5 +66,40 @@ public class fragmentInfoParking extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_info_parking, container, false);
+    }
+
+    public void buttonClicked(View view) {
+        showPopup();
+    }
+
+    private void showPopup() {
+        // Inflate the popup layout
+        View popupView = getLayoutInflater().inflate(R.layout.comment_popup, null);
+
+        // Create the popup window
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = true; // To dismiss the popup when touched outside
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        // Show the popup window
+        popupWindow.showAtLocation(getView(), Gravity.CENTER, 0, 0);
+
+        // Find views in the popup layout
+        TextView titlePopup = popupView.findViewById(R.id.titlePopup);
+        EditText editTextText = popupView.findViewById(R.id.editTextText);
+        Button buttonAddPic = popupView.findViewById(R.id.buttonAddPic);
+        Button buttonAddComment = popupView.findViewById(R.id.buttonAddComment);
+
+        // Set listeners or perform actions on popup views as needed
+
+        // Example: Dismiss popup when 'Finish' button is clicked
+        buttonAddComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+                // Perform any other actions here after popup is dismissed
+            }
+        });
     }
 }
