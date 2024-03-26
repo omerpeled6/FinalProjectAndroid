@@ -12,10 +12,5 @@
         android:icon="@drawable/heart"
         app:showAsAction="ifRoom">
     </item>
-    <item
-        android:id="@+id/settings"
-        android:title="settings"
-        android:icon="@drawable/settings"
-        app:showAsAction="ifRoom">
-    </item>
+
 </menu>

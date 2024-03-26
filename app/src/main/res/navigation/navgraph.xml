@@ -9,7 +9,11 @@
         android:id="@+id/fragmentParkingLot"
         android:name="com.example.myapplication.fragments.fragmentParkingLot"
         android:label="fragment_parking_lot"
-        tools:layout="@layout/fragment_parking_lot" />
+        tools:layout="@layout/fragment_parking_lot" >
+        <action
+            android:id="@+id/action_fragmentParkingLot_to_fragmentInfoParking"
+            app:destination="@id/fragmentInfoParking" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentCardLayout"
         android:name="com.example.myapplication.fragments.fragmentCardLayout"
