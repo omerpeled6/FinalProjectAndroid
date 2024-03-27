@@ -4,9 +4,13 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.PopupWindow;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +63,64 @@ public class fragmentInfoParking extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_info_parking, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_info_parking, container, false);
+
+        // Find your button and set its click listener
+        Button buttonShowComment = rootView.findViewById(R.id.buttonShowComment);
+        buttonShowComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup(v); // Call the method to show the popup when the button is clicked
+            }
+        });
+
+        return rootView;
+    }
+
+    private void showPopup(View view) {
+        // Inflate the popup layout
+        View popupView = LayoutInflater.from(getActivity()).inflate(R.layout.comment_popup, null);
+
+
+//        // Create the popup window
+//        final PopupWindow popupWindow = new PopupWindow(
+//                popupView,
+//                ViewGroup.LayoutParams.WRAP_CONTENT,
+//                ViewGroup.LayoutParams.WRAP_CONTENT
+//        );
+        // Create the popup window with larger width and height
+        final PopupWindow popupWindow = new PopupWindow(
+                popupView,
+                1000, // Set the width as per your requirement, for example, 600 pixels
+                1000, // Set the height as per your requirement, for example, 800 pixels
+                true // Added parameter to allow the popup to dismiss when touch outside
+        );
+
+        // Set focusable true to enable touch events outside of the popup window
+        popupWindow.setFocusable(true);
+
+        // Show the popup window at the center of the screen
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        // Accessing views inside the popup layout
+        EditText editText = popupView.findViewById(R.id.editTextText);
+        Button buttonAddPic = popupView.findViewById(R.id.buttonAddPic);
+        Button buttonAddComment = popupView.findViewById(R.id.buttonAddComment);
+
+        // Example: Handling button click inside the popup
+        buttonAddComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Do something when the "Finish" button inside the popup is clicked
+                // For example, get the text from the EditText
+                String comment = editText.getText().toString();
+                // Then dismiss the popup window
+                popupWindow.dismiss();
+            }
+        });
+    }
+
+
+    public void buttonShowComment(View view) {
     }
 }

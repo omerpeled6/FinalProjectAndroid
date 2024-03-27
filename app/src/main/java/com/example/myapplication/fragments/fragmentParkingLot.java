@@ -42,6 +42,8 @@ public class fragmentParkingLot extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    // Define interface for communication
+
     public fragmentParkingLot() {
         // Required empty public constructor
     }

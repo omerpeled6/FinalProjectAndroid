@@ -4,11 +4,13 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Filter;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -39,6 +41,7 @@ public class fragmentCardLayout extends Fragment {
     private RecyclerView recyclerView;
     private ParkingLotAdapter adapter;
     private SearchView searchView;
+
 
     public fragmentCardLayout() {
         // Required empty public constructor
@@ -76,8 +79,16 @@ public class fragmentCardLayout extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_card_layout, container, false);
-        //ParkingLotAdapter.MyViewHolder myViewHolder=new ParkingLotAdapter.MyViewHolder(view);
-        
+
+        Button button = view.findViewById(R.id.tocardcomment);//שולפת על הכפתור1
+        button.setOnClickListener(new View.OnClickListener() { //מה אני רוצה שיקרה כשלוחצת על הכפתור1
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_global_fragmentInfoParking);
+            }
+        });
+
         return view;
+
     }
 }
