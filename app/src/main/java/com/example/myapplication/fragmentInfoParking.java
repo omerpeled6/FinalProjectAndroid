@@ -123,4 +123,5 @@ public class fragmentInfoParking extends Fragment {
 
     public void buttonShowComment(View view) {
     }
+
 }
