@@ -1,6 +1,7 @@
 package com.example.myapplication.adapters;
 
 import android.graphics.drawable.PictureDrawable;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,10 +47,10 @@ public class ParkingLotAdapter extends RecyclerView.Adapter<ParkingLotAdapter.My
     @Override
     public void onBindViewHolder(@NonNull ParkingLotAdapter.MyViewHolder holder, int position) { //עוברים על תאי המערך ומשבצים על גבי הרשומות
 
-        holder.textname.setText(dataset.get(position).getName());
-        holder.textnadress.setText(dataset.get(position).getAddress());
-        holder.textparksnum.setText(dataset.get(position).getNumOfParks());
-        holder.textdisablenum.setText(dataset.get(position).getNumOfDisabled());
+        holder.textName.setText(dataset.get(position).getName());
+        holder.textAdress.setText(dataset.get(position).getAddress());
+        holder.textParksnum.setText(dataset.get(position).getNumOfParks());
+        holder.textDisablenum.setText(dataset.get(position).getNumOfDisabled());
     }
 
     @Override
@@ -60,24 +61,34 @@ public class ParkingLotAdapter extends RecyclerView.Adapter<ParkingLotAdapter.My
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textname;
-        TextView textnadress;
-        TextView textparksnum;
-        TextView textdisablenum;
+        TextView textName;
+        TextView textAdress;
+        TextView textParksnum;
+        TextView textDisablenum;
 
         public MyViewHolder(@NonNull View itemView) { //תוכן הקארד
             super(itemView);
 
-            textname = itemView.findViewById(R.id.name);
-            textnadress = itemView.findViewById(R.id.adress);
-            textparksnum = itemView.findViewById(R.id.parksNum);
-            textdisablenum = itemView.findViewById(R.id.disablesNum);
+            textName = itemView.findViewById(R.id.name);
+            textAdress = itemView.findViewById(R.id.adress);
+            textParksnum = itemView.findViewById(R.id.parksNum);
+            textDisablenum = itemView.findViewById(R.id.disablesNum);
 
             Button button = itemView.findViewById(R.id.tocardcomment);
             button.setOnClickListener(new View.OnClickListener() { //מה אני רוצה שיקרה כשלוחצת על הכפתור1
                 @Override
                 public void onClick(View v) {
-                    Navigation.findNavController(itemView).navigate(R.id.action_global_fragmentInfoParking);
+                    Bundle bundle = new Bundle();
+                    String valueName = textName.getText().toString();
+                    String valueAdress = textAdress.getText().toString();
+                    String valueNum = textParksnum.getText().toString();
+                    String valueDisable = textDisablenum.getText().toString();
+
+                    bundle.putString("name", valueName);
+                    bundle.putString("address", valueAdress);
+                    bundle.putString("number", valueNum);
+                    bundle.putString("disable", valueDisable);
+                    Navigation.findNavController(itemView).navigate(R.id.action_global_fragmentInfoParking,bundle);
                 }
             });
         }
