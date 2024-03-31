@@ -5,19 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.appcompat.widget.Toolbar;
-import android.os.Bundle;
+
 import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentContainerView;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import com.example.myapplication.NavigationListener;
 import com.example.myapplication.R;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Objects;
+
+public class MainActivity extends AppCompatActivity implements NavigationListener {
+    private FragmentContainerView fragmentContainerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        fragmentContainerView = findViewById(R.id.fragmentContainerView);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -44,5 +51,20 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this,"heart",Toast.LENGTH_SHORT).show();
         }
         return true;
+    }
+
+    /*public void navigateToInfoParking(View view) {
+        NavController navController = Navigation.findNavController(view);  // Use the passed view
+        navController.navigate(R.id.action_global_fragmentInfoParking);
+    }
+    public void navigateToInfoParking() {
+        NavController navController = Navigation.findNavController(Objects.requireNonNull(this.getCurrentFocus()));
+        navController.navigate(R.id.action_global_fragmentInfoParking); // Replace with your action ID
+    }*/
+
+    @Override
+    public void navigateToInfoParking(View v) {
+        NavController navController = Navigation.findNavController(v);
+        navController.navigate(R.id.action_global_fragmentInfoParking);
     }
 }

@@ -2,9 +2,14 @@ package com.example.myapplication.fragments;
 
 import static java.util.Locale.filter;
 
+import android.app.PendingIntent;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDeepLinkBuilder;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 
+import com.example.myapplication.NavigationListener;
 import com.example.myapplication.R;
 import com.example.myapplication.adapters.ParkingLotAdapter;
 import com.example.myapplication.models.ParkingLot;
@@ -108,7 +114,9 @@ public class fragmentParkingLot extends Fragment {
                 return true;
             }
         });
+
         return view;
+
     }
     private void filter(String query) {
 

@@ -1,5 +1,6 @@
 package com.example.myapplication.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +17,9 @@ import android.widget.Filter;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.example.myapplication.NavigationListener;
 import com.example.myapplication.R;
+import com.example.myapplication.activitys.MainActivity;
 import com.example.myapplication.adapters.ParkingLotAdapter;
 import com.example.myapplication.models.ParkingLot;
 
@@ -41,6 +45,8 @@ public class fragmentCardLayout extends Fragment {
     private RecyclerView recyclerView;
     private ParkingLotAdapter adapter;
     private SearchView searchView;
+    private NavigationListener listener;  // Define a listener variable
+
 
 
     public fragmentCardLayout() {
@@ -65,6 +71,16 @@ public class fragmentCardLayout extends Fragment {
         return fragment;
     }
 
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof MainActivity) {
+            listener = (NavigationListener) context;
+            Log.d("Navigation", "Listener attached");
+        } else {
+            throw new RuntimeException("Must implement NavigationListener");
+        }
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,18 +93,20 @@ public class fragmentCardLayout extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_card_layout, container, false);
 
         Button button = view.findViewById(R.id.tocardcomment);//שולפת על הכפתור1
-        button.setOnClickListener(new View.OnClickListener() { //מה אני רוצה שיקרה כשלוחצת על הכפתור1
+        /*button.setOnClickListener(new View.OnClickListener() { //מה אני רוצה שיקרה כשלוחצת על הכפתור1
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_global_fragmentInfoParking);
-            }
-        });
+                //Navigation.findNavController(view).navigate(R.id.action_global_fragmentInfoParking);
+                if (listener != null) {
+                    Log.d("Navigation", "Calling listener navigateToInfoParking");
+                    listener.navigateToInfoParking(view);
+                    }
+                };
+        });*/
 
         return view;
-
     }
 }

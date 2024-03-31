@@ -4,11 +4,13 @@ import android.graphics.drawable.PictureDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
@@ -27,7 +29,7 @@ public class ParkingLotAdapter extends RecyclerView.Adapter<ParkingLotAdapter.My
 
 
     public ParkingLotAdapter(ArrayList<ParkingLot> dataSet) {
-        this.dataset=dataSet;
+        this.dataset = dataSet;
         this.datasetFull = new ArrayList<>(dataSet); // Copy the dataset for filtering
     }
 
@@ -35,8 +37,8 @@ public class ParkingLotAdapter extends RecyclerView.Adapter<ParkingLotAdapter.My
     @Override
     public ParkingLotAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) { //יוצר אצ הקארד
 
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_card_layout, parent,false);
-        MyViewHolder myViewHolder=new MyViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_card_layout, parent, false);
+        MyViewHolder myViewHolder = new MyViewHolder(view);
 
         return myViewHolder;
     }
@@ -66,12 +68,22 @@ public class ParkingLotAdapter extends RecyclerView.Adapter<ParkingLotAdapter.My
         public MyViewHolder(@NonNull View itemView) { //תוכן הקארד
             super(itemView);
 
-            textname=itemView.findViewById(R.id.name);
-            textnadress=itemView.findViewById(R.id.adress);
-            textparksnum=itemView.findViewById(R.id.parksNum);
-            textdisablenum=itemView.findViewById(R.id.disablesNum);
+            textname = itemView.findViewById(R.id.name);
+            textnadress = itemView.findViewById(R.id.adress);
+            textparksnum = itemView.findViewById(R.id.parksNum);
+            textdisablenum = itemView.findViewById(R.id.disablesNum);
+
+            Button button = itemView.findViewById(R.id.tocardcomment);
+            button.setOnClickListener(new View.OnClickListener() { //מה אני רוצה שיקרה כשלוחצת על הכפתור1
+                @Override
+                public void onClick(View v) {
+                    Navigation.findNavController(itemView).navigate(R.id.action_global_fragmentInfoParking);
+                }
+            });
         }
     }
+
+
 
     public Filter getFilter() {
         return new Filter() {
@@ -103,6 +115,4 @@ public class ParkingLotAdapter extends RecyclerView.Adapter<ParkingLotAdapter.My
             }
         };
     }
-
-
 }

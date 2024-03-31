@@ -3,27 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navgraph"
-    app:startDestination="@id/navigation2">
+    app:startDestination="@id/fragmentParkingLot">
 
     <fragment
         android:id="@+id/fragmentInfoParking"
         android:name="com.example.myapplication.fragmentInfoParking"
         android:label="fragment_info_parking"
         tools:layout="@layout/fragment_info_parking" />
-    <navigation android:id="@+id/navigation2"
-        app:startDestination="@id/fragmentCardLayout">
-        <fragment
-            android:id="@+id/fragmentParkingLot"
-            android:name="com.example.myapplication.fragments.fragmentParkingLot"
-            android:label="fragment_parking_lot"
-            tools:layout="@layout/fragment_parking_lot" />
+
+    <fragment
+        android:id="@+id/fragmentParkingLot"
+        android:name="com.example.myapplication.fragments.fragmentParkingLot"
+        android:label="fragment_parking_lot"
+        tools:layout="@layout/fragment_parking_lot"/>
         <fragment
             android:id="@+id/fragmentCardLayout"
             android:name="com.example.myapplication.fragments.fragmentCardLayout"
             android:label="fragment_card_layout"
-            tools:layout="@layout/fragment_card_layout"/>
-        <action
-            android:id="@+id/action_global_fragmentInfoParking"
-            app:destination="@id/fragmentInfoParking" />
-    </navigation>
+            tools:layout="@layout/fragment_card_layout" >
+            <action
+                android:id="@+id/action_global_fragmentInfoParking"
+                app:destination="@id/fragmentInfoParking" />
+        </fragment>
 </navigation>
