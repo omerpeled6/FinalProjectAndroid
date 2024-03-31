@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements NavigationListene
 
     @Override
     public void navigateToInfoParking(View v) {
-        NavController navController = Navigation.findNavController(v);
-        navController.navigate(R.id.action_global_fragmentInfoParking);
+        Navigation.findNavController(v)
+                .navigate(R.id.action_global_fragmentInfoParking);
     }
 }
