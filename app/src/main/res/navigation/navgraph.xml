@@ -11,7 +11,7 @@
         android:label="fragment_info_parking"
         tools:layout="@layout/fragment_info_parking" />
     <navigation android:id="@+id/navigation2"
-        app:startDestination="@id/fragmentCardLayout">
+        app:startDestination="@id/fragmentParkingLot">
         <fragment
             android:id="@+id/fragmentParkingLot"
             android:name="com.example.myapplication.fragments.fragmentParkingLot"
