@@ -3,6 +3,7 @@ package com.example.myapplication.activitys;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -21,7 +22,7 @@ import com.example.myapplication.R;
 
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity implements NavigationListener {
+public class MainActivity extends AppCompatActivity implements NavigationListener{
     private FragmentContainerView fragmentContainerView;
 
     @Override

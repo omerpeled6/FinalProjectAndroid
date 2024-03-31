@@ -96,7 +96,7 @@ public class fragmentCardLayout extends Fragment {
         View view = inflater.inflate(R.layout.fragment_card_layout, container, false);
 
         Button button = view.findViewById(R.id.tocardcomment);//שולפת על הכפתור1
-        /*button.setOnClickListener(new View.OnClickListener() { //מה אני רוצה שיקרה כשלוחצת על הכפתור1
+        button.setOnClickListener(new View.OnClickListener() { //מה אני רוצה שיקרה כשלוחצת על הכפתור1
             @Override
             public void onClick(View v) {
                 //Navigation.findNavController(view).navigate(R.id.action_global_fragmentInfoParking);
@@ -105,7 +105,7 @@ public class fragmentCardLayout extends Fragment {
                     listener.navigateToInfoParking(view);
                     }
                 };
-        });*/
+        });
 
         return view;
     }
