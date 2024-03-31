@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,17 +66,38 @@ public class fragmentInfoParking extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_info_parking, container, false);
 
-        // Find your button and set its click listener
-        Button buttonShowComment = rootView.findViewById(R.id.buttonShowComment);
-        buttonShowComment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopup(v); // Call the method to show the popup when the button is clicked
-            }
-        });
+        Bundle arguments = getArguments();
+        if (arguments != null) {
+            String name = arguments.getString("name");
+            String address = arguments.getString("address");
+            String number = arguments.getString("number");
+            String disable = arguments.getString("disable");
 
-        return rootView;
-    }
+            // Update UI elements
+            TextView nameTextView = rootView.findViewById(R.id.textView);
+            nameTextView.setText(name);
+
+            TextView addressTextView = rootView.findViewById(R.id.parkingAddress);
+            addressTextView.setText(address);
+
+            TextView numTextView = rootView.findViewById(R.id.parkingNormal);
+            nameTextView.setText(name);
+
+            TextView disableTextView = rootView.findViewById(R.id.parkingDisabled);
+            addressTextView.setText(address);
+
+            // Find your button and set its click listener
+            Button buttonShowComment = rootView.findViewById(R.id.buttonShowComment);
+            buttonShowComment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showPopup(v); // Call the method to show the popup when the button is clicked
+                }
+            });
+        }
+            return rootView;
+        }
+
 
     private void showPopup(View view) {
         // Inflate the popup layout
