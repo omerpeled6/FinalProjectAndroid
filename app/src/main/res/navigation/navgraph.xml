@@ -15,14 +15,9 @@
         android:id="@+id/fragmentParkingLot"
         android:name="com.example.myapplication.fragments.fragmentParkingLot"
         android:label="fragment_parking_lot"
-        tools:layout="@layout/fragment_parking_lot"/>
-        <fragment
-            android:id="@+id/fragmentCardLayout"
-            android:name="com.example.myapplication.fragments.fragmentCardLayout"
-            android:label="fragment_card_layout"
-            tools:layout="@layout/fragment_card_layout" >
-            <action
-                android:id="@+id/action_global_fragmentInfoParking"
-                app:destination="@id/fragmentInfoParking" />
-        </fragment>
+        tools:layout="@layout/fragment_parking_lot">
+        <action
+            android:id="@+id/action_global_fragmentInfoParking"
+            app:destination="@id/fragmentInfoParking" />
+    </fragment>
 </navigation>

@@ -72,6 +72,14 @@ public class ParkingLotAdapter extends RecyclerView.Adapter<ParkingLotAdapter.My
             textnadress = itemView.findViewById(R.id.adress);
             textparksnum = itemView.findViewById(R.id.parksNum);
             textdisablenum = itemView.findViewById(R.id.disablesNum);
+
+            Button button = itemView.findViewById(R.id.tocardcomment);
+            button.setOnClickListener(new View.OnClickListener() { //מה אני רוצה שיקרה כשלוחצת על הכפתור1
+                @Override
+                public void onClick(View v) {
+                    Navigation.findNavController(itemView).navigate(R.id.action_global_fragmentInfoParking);
+                }
+            });
         }
     }
 
