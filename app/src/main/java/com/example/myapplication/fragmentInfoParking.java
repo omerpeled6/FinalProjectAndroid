@@ -95,7 +95,7 @@ public class fragmentInfoParking extends Fragment {
                 public void onClick(View v) {
                     showPopup(v); // Call the method to show the popup when the button is clicked
                     //rootView.setVisibility(View.INVISIBLE);
-                    rootView.setBackgroundTintMode();
+                    //rootView.setBackgroundTintMode();
                 }
             });
         }
