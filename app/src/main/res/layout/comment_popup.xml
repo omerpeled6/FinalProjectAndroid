@@ -24,8 +24,9 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:ems="10"
+        android:fontFamily="More Fonts..."
         android:inputType="text"
-        android:text="AddComment" />
+        android:text="Add Comment" />
 
     <Button
         android:id="@+id/buttonAddPic"
