@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
@@ -92,6 +94,8 @@ public class fragmentInfoParking extends Fragment {
                 @Override
                 public void onClick(View v) {
                     showPopup(v); // Call the method to show the popup when the button is clicked
+                    //rootView.setVisibility(View.INVISIBLE);
+                    rootView.setBackgroundTintMode();
                 }
             });
         }
@@ -102,6 +106,7 @@ public class fragmentInfoParking extends Fragment {
     private void showPopup(View view) {
         // Inflate the popup layout
         View popupView = LayoutInflater.from(getActivity()).inflate(R.layout.comment_popup, null);
+
 
 
 //        // Create the popup window

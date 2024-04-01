@@ -1,44 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="500dp"
-    android:layout_height="500dp"
-    android:orientation="vertical"
-    android:background="@color/white"
-    android:padding="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="24dp">
 
-    >
-
-    <TextView
-        android:id="@+id/titlePopup"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="center"
-        android:text="Add Comment"
-        android:textSize="34sp" />
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="10dp"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:ems="10"
-        android:fontFamily="More Fonts..."
-        android:inputType="text"
-        android:text="Add Comment" />
+        <TextView
+            android:id="@+id/titlePopup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Add Comment"
+            android:textSize="34sp" />
 
-    <Button
-        android:id="@+id/buttonAddPic"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="AddPic" />
+        <EditText
+            android:id="@+id/editTextText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="Add Comment" />
 
-    <Button
-        android:id="@+id/buttonAddComment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="Finish" />
+        <Button
+            android:id="@+id/buttonAddPic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="AddPic" />
+
+        <Button
+            android:id="@+id/buttonAddComment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Finish" />
+    </LinearLayout>
+
 </LinearLayout>
