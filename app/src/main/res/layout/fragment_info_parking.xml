@@ -13,7 +13,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="50px"
         android:layout_marginTop="50px"
+        android:layout_marginRight="50px"
+        android:layout_marginBottom="50px"
         android:background="@drawable/white_background"
         android:orientation="vertical"
         android:paddingBottom="20px">
@@ -30,15 +33,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.1"
                 android:gravity="center"
+                android:paddingTop="30px"
+                android:paddingBottom="30px"
                 android:text="parkingName"
                 android:textColor="@color/lavender"
                 android:textSize="34sp" />
 
-            <Button
-                android:id="@+id/fav"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/heart" />
         </LinearLayout>
 
         <LinearLayout
@@ -83,9 +83,9 @@
             android:id="@+id/buttonShowComment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20px"
+            android:layout_marginLeft="30px"
             android:layout_marginTop="30px"
-            android:layout_marginRight="20px"
+            android:layout_marginRight="30px"
             android:onClick="buttonShowComment"
             android:text="buttonAddComment" />
     </LinearLayout>
@@ -94,7 +94,6 @@
         android:id="@+id/resview2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/pagebkg" />
+        android:layout_weight="1" />
 
 </LinearLayout>
