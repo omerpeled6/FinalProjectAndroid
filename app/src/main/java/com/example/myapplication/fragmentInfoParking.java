@@ -81,10 +81,10 @@ public class fragmentInfoParking extends Fragment {
             addressTextView.setText(address);
 
             TextView numTextView = rootView.findViewById(R.id.parkingNormal);
-            nameTextView.setText(name);
+            numTextView.setText(number);
 
             TextView disableTextView = rootView.findViewById(R.id.parkingDisabled);
-            addressTextView.setText(address);
+            disableTextView.setText(disable);
 
             // Find your button and set its click listener
             Button buttonShowComment = rootView.findViewById(R.id.buttonShowComment);
