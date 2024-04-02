@@ -1,13 +1,11 @@
 package com.example.myapplication.adapters;
 
-import android.graphics.drawable.PictureDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Filter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,9 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.models.ParkingLot;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,7 +66,7 @@ public class ParkingLotAdapter extends RecyclerView.Adapter<ParkingLotAdapter.My
 
             textName = itemView.findViewById(R.id.name);
             textAdress = itemView.findViewById(R.id.adress);
-            textParksnum = itemView.findViewById(R.id.parksNum);
+            textParksnum = itemView.findViewById(R.id.parksnum);
             textDisablenum = itemView.findViewById(R.id.disablesNum);
 
             Button button = itemView.findViewById(R.id.tocardcomment);

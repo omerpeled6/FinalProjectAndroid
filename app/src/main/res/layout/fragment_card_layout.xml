@@ -30,7 +30,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingBottom="10dp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/adress"
@@ -38,28 +39,32 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingBottom="10dp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/parksNum"
+                android:id="@+id/parksnum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingBottom="10dp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/disablesNum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:paddingBottom="100dp"
-                android:text="TextView" />
+                android:paddingBottom="10dp"
+                android:text="TextView"
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/tocardcomment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30px"
                 android:layout_weight="1"
                 android:text="More info" />
 

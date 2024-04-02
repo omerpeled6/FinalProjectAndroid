@@ -11,12 +11,16 @@
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1.5"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="30px"
+        android:layout_marginRight="30px"
+        android:layout_marginBottom="30px"
+        android:layout_weight="1.2"
         android:background="@drawable/lavender_border"
         android:backgroundTint="#FFFFFF"
         android:imeOptions="actionSearch"
-        android:layoutDirection="rtl"
-        android:inputType="text|textMultiLine" />
+        android:inputType="text|textMultiLine"
+        android:layoutDirection="rtl" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/resview"
