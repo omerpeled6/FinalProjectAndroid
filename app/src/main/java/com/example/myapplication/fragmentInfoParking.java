@@ -1,6 +1,9 @@
 package com.example.myapplication;
 
+import android.content.Context;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +12,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupWindow;
@@ -94,20 +98,33 @@ public class fragmentInfoParking extends Fragment {
                 @Override
                 public void onClick(View v) {
                     showPopup(v); // Call the method to show the popup when the button is clicked
-                    //rootView.setVisibility(View.INVISIBLE);
-                    rootView.setBackgroundTintMode();
                 }
             });
         }
             return rootView;
         }
 
+    public static void dimBehind(PopupWindow popupWindow) {
+        View container;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            container = (View) popupWindow.getContentView().getParent();
+        } else {
+            container = popupWindow.getContentView();
+        }
+        if (popupWindow.getBackground() != null) {
+            container = (View) container.getParent();
+        }
+        Context context = popupWindow.getContentView().getContext();
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        WindowManager.LayoutParams p = (WindowManager.LayoutParams) container.getLayoutParams();
+        p.flags |= WindowManager.LayoutParams.FLAG_DIM_BEHIND; // add a flag here instead of clear others
+        p.dimAmount = 0.3f;
+        wm.updateViewLayout(container, p);
+    }
 
     private void showPopup(View view) {
         // Inflate the popup layout
         View popupView = LayoutInflater.from(getActivity()).inflate(R.layout.comment_popup, null);
-
-
 
 //        // Create the popup window
 //        final PopupWindow popupWindow = new PopupWindow(
@@ -129,12 +146,15 @@ public class fragmentInfoParking extends Fragment {
         // Show the popup window at the center of the screen
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
+
         // Accessing views inside the popup layout
         EditText editText = popupView.findViewById(R.id.editTextText);
         Button buttonAddPic = popupView.findViewById(R.id.buttonAddPic);
         Button buttonAddComment = popupView.findViewById(R.id.buttonAddComment);
 
-        // Example: Handling button click inside the popup
+        dimBehind(popupWindow);
+
+        // Handling button click inside the popup
         buttonAddComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
