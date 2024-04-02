@@ -2,9 +2,9 @@ package com.example.myapplication;
 
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,20 +14,22 @@ import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link fragmentInfoParking#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.example.myapplication.R;
+import com.example.myapplication.models.Comment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class fragmentInfoParking extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -35,15 +37,6 @@ public class fragmentInfoParking extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment fragmentInfoParking.
-     */
-    // TODO: Rename and change types and number of parameters
     public static fragmentInfoParking newInstance(String param1, String param2) {
         fragmentInfoParking fragment = new fragmentInfoParking();
         Bundle args = new Bundle();
@@ -65,7 +58,6 @@ public class fragmentInfoParking extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_info_parking, container, false);
 
         Bundle arguments = getArguments();
@@ -75,7 +67,6 @@ public class fragmentInfoParking extends Fragment {
             String number = arguments.getString("number");
             String disable = arguments.getString("disable");
 
-            // Update UI elements
             TextView nameTextView = rootView.findViewById(R.id.textView);
             nameTextView.setText(name);
 
@@ -88,67 +79,71 @@ public class fragmentInfoParking extends Fragment {
             TextView disableTextView = rootView.findViewById(R.id.parkingDisabled);
             disableTextView.setText(disable);
 
-            // Find your button and set its click listener
             Button buttonShowComment = rootView.findViewById(R.id.buttonShowComment);
             buttonShowComment.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPopup(v); // Call the method to show the popup when the button is clicked
-                    //rootView.setVisibility(View.INVISIBLE);
-                    rootView.setBackgroundTintMode();
+                    showPopup(v);
                 }
             });
         }
-            return rootView;
-        }
-
+        return rootView;
+    }
 
     private void showPopup(View view) {
-        // Inflate the popup layout
         View popupView = LayoutInflater.from(getActivity()).inflate(R.layout.comment_popup, null);
-
-
-
-//        // Create the popup window
-//        final PopupWindow popupWindow = new PopupWindow(
-//                popupView,
-//                ViewGroup.LayoutParams.WRAP_CONTENT,
-//                ViewGroup.LayoutParams.WRAP_CONTENT
-//        );
-        // Create the popup window with larger width and height
         final PopupWindow popupWindow = new PopupWindow(
                 popupView,
-                1000, // Set the width as per your requirement, for example, 600 pixels
-                1000, // Set the height as per your requirement, for example, 800 pixels
-                true // Added parameter to allow the popup to dismiss when touch outside
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                true
         );
-
-        // Set focusable true to enable touch events outside of the popup window
         popupWindow.setFocusable(true);
 
-        // Show the popup window at the center of the screen
-        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-
-        // Accessing views inside the popup layout
         EditText editText = popupView.findViewById(R.id.editTextText);
-        Button buttonAddPic = popupView.findViewById(R.id.buttonAddPic);
         Button buttonAddComment = popupView.findViewById(R.id.buttonAddComment);
 
-        // Example: Handling button click inside the popup
         buttonAddComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Do something when the "Finish" button inside the popup is clicked
-                // For example, get the text from the EditText
-                String comment = editText.getText().toString();
-                // Then dismiss the popup window
+                String commentText = editText.getText().toString();
+                String currentDate = getCurrentDate();
+                String userId = null;
+
+                // Check if the user is authenticated
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+                if (auth.getCurrentUser() != null) {
+                    // Get the user ID
+                    userId = auth.getCurrentUser().getUid();
+                } else {
+                    // Handle the case when the user is not authenticated
+                    // You can show a message or prompt the user to log in
+                    // For now, just log an error message
+                    Log.e("FragmentInfoParking", "User is not authenticated");
+                    return; // Exit the onClick method
+                }
+
+                Comment comment = new Comment(commentText, currentDate, "", "", userId);
+
+                DatabaseReference commentsRef = FirebaseDatabase.getInstance().getReference()
+                        .child("comments").child("parkingLotId");
+
+                commentsRef.push().setValue(comment);
+
                 popupWindow.dismiss();
+
+                // Show a toast message
+                Toast.makeText(getContext(), "Comment added successfully", Toast.LENGTH_SHORT).show();
             }
         });
+
+
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
     }
 
-
-    public void buttonShowComment(View view) {
+    private String getCurrentDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        Date date = new Date();
+        return dateFormat.format(date);
     }
-
 }
