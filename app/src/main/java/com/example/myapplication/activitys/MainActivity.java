@@ -76,26 +76,4 @@ public class MainActivity extends AppCompatActivity implements NavigationListene
     }
 
 
-
-//    public void buttonAddComment(View view) {
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("users").child("0508334100"); // משהו יחודי
-//
-//        // Read from the database
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                // This method is called once with the initial value and again
-//                // whenever data at this location is updated.
-//                Comment value = dataSnapshot.getValue(Comment.class);
-//                Toast.makeText(MainActivity.this , value.toString() ,Toast.LENGTH_LONG).show();
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//                // Failed to read value
-//            }
-//        });
-//    }
 }
