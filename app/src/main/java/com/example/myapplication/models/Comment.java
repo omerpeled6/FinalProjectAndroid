@@ -1,10 +1,10 @@
 package com.example.myapplication.models;
 
 public class Comment {
-    private String commentText;
-    private String date;
-    private String time;
-    private String userId;
+    public String commentText;
+    public String date;
+    public String time;
+    public String userId;
 
     public Comment() {
     }

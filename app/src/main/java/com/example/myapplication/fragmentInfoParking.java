@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.myapplication.activitys.MainActivity;
 import com.example.myapplication.models.Comment;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -49,7 +50,9 @@ public class fragmentInfoParking extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private DatabaseReference mDatabase;
+//    private FirebaseAuth mAuth;
+private DatabaseReference mDatabase;
+
 
     private String getCurrentUserId() {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -91,7 +94,7 @@ public class fragmentInfoParking extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+
     }
 
     @Override
@@ -99,6 +102,10 @@ public class fragmentInfoParking extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_info_parking, container, false);
+
+        FirebaseApp.initializeApp(getActivity());
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
 
         Bundle arguments = getArguments();
         if (arguments != null) {
@@ -125,6 +132,25 @@ public class fragmentInfoParking extends Fragment {
             buttonShowComment.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    // הוספה סטטית ללא פופאפ
+//
+//                    Date currentDate = new Date();
+//
+//                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//                    SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+//
+//                    String date = dateFormat.format(currentDate);
+//                    String time = timeFormat.format(currentDate);
+//
+//                    // Get a reference to the "commentArray" under the specific parkingLotId
+//                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                    Comment comment = new Comment("ewf", date, time, "1234");
+//                    DatabaseReference myRef = database.getReference("parkingLotId").child("commentArray").child(comment.time);
+//
+//                    myRef.setValue(comment);
+//
+//                    Toast.makeText(getContext(), "Comment add:   " + comment.date + " " + comment.time + " " + comment.commentText+ " " + comment.userId , Toast.LENGTH_LONG).show();
+
                     showPopup(v); // Call the method to show the popup when the button is clicked
                 }
             });
@@ -205,19 +231,17 @@ public class fragmentInfoParking extends Fragment {
 
                 // Get a reference to the "commentArray" under the specific parkingLotId
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("parkingLotId").child("commentArray");
-
-                // Generate a unique key for the comment
-                String commentId = myRef.push().getKey();
-
-                // Create a Comment object
                 Comment comment = new Comment(editText.toString(), date, time, "1234");
+                DatabaseReference myRef = database.getReference("parkingLotId").child("commentArray").child(comment.time);
 
-                // Add the comment to the database
-                myRef.child(commentId).setValue(comment);
+                myRef.setValue(comment);
+
+                Toast.makeText(getContext(), "Comment add:   " + comment.date + " " + comment.time + " " + comment.commentText+ " " + comment.userId , Toast.LENGTH_LONG).show();
+
             }
         });
     }
 
 
 }
+
