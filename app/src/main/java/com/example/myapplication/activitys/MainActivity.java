@@ -19,6 +19,12 @@ import androidx.navigation.Navigation;
 
 import com.example.myapplication.NavigationListener;
 import com.example.myapplication.R;
+import com.example.myapplication.models.Comment;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
@@ -59,4 +65,6 @@ public class MainActivity extends AppCompatActivity implements NavigationListene
         Navigation.findNavController(v)
                 .navigate(R.id.action_global_fragmentInfoParking);
     }
+
+
 }

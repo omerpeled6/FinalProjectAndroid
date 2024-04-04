@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,20 @@ import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.myapplication.activitys.MainActivity;
+import com.example.myapplication.models.Comment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,6 +49,18 @@ public class fragmentInfoParking extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private DatabaseReference mDatabase;
+
+    private String getCurrentUserId() {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            return currentUser.getUid();
+        } else {
+            // Handle the case where the user is not logged in
+            return null;
+        }
+    }
 
     public fragmentInfoParking() {
         // Required empty public constructor
@@ -64,6 +91,7 @@ public class fragmentInfoParking extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
     @Override
@@ -126,12 +154,6 @@ public class fragmentInfoParking extends Fragment {
         // Inflate the popup layout
         View popupView = LayoutInflater.from(getActivity()).inflate(R.layout.comment_popup, null);
 
-//        // Create the popup window
-//        final PopupWindow popupWindow = new PopupWindow(
-//                popupView,
-//                ViewGroup.LayoutParams.WRAP_CONTENT,
-//                ViewGroup.LayoutParams.WRAP_CONTENT
-//        );
         // Create the popup window with larger width and height
         final PopupWindow popupWindow = new PopupWindow(
                 popupView,
@@ -146,10 +168,6 @@ public class fragmentInfoParking extends Fragment {
         // Show the popup window at the center of the screen
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
-
-        // Accessing views inside the popup layout
-        EditText editText = popupView.findViewById(R.id.editTextText);
-        Button buttonAddPic = popupView.findViewById(R.id.buttonAddPic);
         Button buttonAddComment = popupView.findViewById(R.id.buttonAddComment);
 
         dimBehind(popupWindow);
@@ -158,17 +176,48 @@ public class fragmentInfoParking extends Fragment {
         buttonAddComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Do something when the "Finish" button inside the popup is clicked
-                // For example, get the text from the EditText
-                String comment = editText.getText().toString();
                 // Then dismiss the popup window
                 popupWindow.dismiss();
+
+                // Call the addFunction to add the comment to the database
+                addComment(v);
+            }
+
+            public void addComment(View view) {
+                String editText=((EditText) popupView.findViewById(R.id.TextComment)).getText().toString().trim();
+
+
+                // Get the current date and time
+                Date currentDate = new Date();
+
+                // Format the date and time
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+
+                // Convert date and time to strings
+                String date = dateFormat.format(currentDate);
+                String time = timeFormat.format(currentDate);
+
+                // Get the user ID of the current user (You need to implement this based on your authentication system)
+//                String userId;
+//                Bundle bundle = new Bundle();
+//                bundle.putString("userEmail", userId);
+
+                // Get a reference to the "commentArray" under the specific parkingLotId
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("parkingLotId").child("commentArray");
+
+                // Generate a unique key for the comment
+                String commentId = myRef.push().getKey();
+
+                // Create a Comment object
+                Comment comment = new Comment(editText.toString(), date, time, "1234");
+
+                // Add the comment to the database
+                myRef.child(commentId).setValue(comment);
             }
         });
     }
 
-
-    public void buttonShowComment(View view) {
-    }
 
 }
