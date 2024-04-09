@@ -2,51 +2,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
-    android:background="@color/white"
+    android:background="@drawable/white_background"
     android:gravity="center"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:padding="24dp">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/titlePopup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:layout_gravity="center_horizontal"
-        android:paddingBottom="10dp"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/lavender"
+        android:textStyle="bold"
+        android:text="Add comment"
+        android:textSize="36sp" />
 
-        <TextView
-            android:id="@+id/titlePopup"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Add Comment"
-            android:textSize="34sp" />
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="Add comment"
+        android:inputType="text" />
 
-        <EditText
-            android:id="@+id/editTextText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="text"
-            android:hint="Add Comment" />
 
-        <Button
-            android:id="@+id/buttonAddPic"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="AddPic" />
+    <Button
+        android:id="@+id/buttonAddComment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:textSize="18sp"
+        android:layout_marginTop="30dp"
+        app:cornerRadius = "20dp"
+        android:text="Finish" />
 
-        <Button
-            android:id="@+id/buttonAddComment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Finish" />
-    </LinearLayout>
-
-</LinearLayout>
+     </LinearLayout>

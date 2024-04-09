@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.graphics.PorterDuff;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +11,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupWindow;
@@ -101,7 +104,23 @@ public class fragmentInfoParking extends Fragment {
         }
             return rootView;
         }
-
+    public static void dimBehind(PopupWindow popupWindow) {
+        View container;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            container = (View) popupWindow.getContentView().getParent();
+        } else {
+            container = popupWindow.getContentView();
+        }
+        if (popupWindow.getBackground() != null) {
+            container = (View) container.getParent();
+        }
+        Context context = popupWindow.getContentView().getContext();
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        WindowManager.LayoutParams p = (WindowManager.LayoutParams) container.getLayoutParams();
+        p.flags |= WindowManager.LayoutParams.FLAG_DIM_BEHIND; // add a flag here instead of clear others
+        p.dimAmount = 0.3f;
+        wm.updateViewLayout(container, p);
+    }
 
     private void showPopup(View view) {
         // Inflate the popup layout
@@ -131,9 +150,9 @@ public class fragmentInfoParking extends Fragment {
 
         // Accessing views inside the popup layout
         EditText editText = popupView.findViewById(R.id.editTextText);
-        Button buttonAddPic = popupView.findViewById(R.id.buttonAddPic);
+        //Button buttonAddPic = popupView.findViewById(R.id.buttonAddPic);
         Button buttonAddComment = popupView.findViewById(R.id.buttonAddComment);
-
+        dimBehind(popupWindow);
         // Example: Handling button click inside the popup
         buttonAddComment.setOnClickListener(new View.OnClickListener() {
             @Override
