@@ -46,6 +46,7 @@ public class DataService {
                     String name = getStringValue(attributes, "name");
                     String address = getStringValue(attributes, "address");
                     String disablesNum = getStringValue(attributes, "num_disabled");
+                    String parkingLotId = getStringValue(attributes, "oid");
 
                     arrParkingLots.add(new ParkingLot("שם החניון: "+name,"כתובת: "+ address,"מספר חניות: "+ parksNum,"מספר חניות נכים: "+ disablesNum));//יצירת אובייקט של מדינה אחת עם הנתונים שלה
                 }
