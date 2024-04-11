@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/pagebkg"
     android:orientation="vertical"
-    android:visibility="visible"
     tools:context=".fragmentInfoParking">
 
 

@@ -18,6 +18,13 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link fragmentInfoParking#newInstance} factory method to
@@ -77,6 +84,7 @@ public class fragmentInfoParking extends Fragment {
             String address = arguments.getString("address");
             String number = arguments.getString("number");
             String disable = arguments.getString("disable");
+            String id=arguments.getString("oid");
 
             // Update UI elements
             TextView nameTextView = rootView.findViewById(R.id.textView);
@@ -91,19 +99,20 @@ public class fragmentInfoParking extends Fragment {
             TextView disableTextView = rootView.findViewById(R.id.parkingDisabled);
             disableTextView.setText(disable);
 
+
             // Find your button and set its click listener
             Button buttonShowComment = rootView.findViewById(R.id.buttonShowComment);
             buttonShowComment.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPopup(v); // Call the method to show the popup when the button is clicked
+                    showPopup(v,id); // Call the method to show the popup when the button is clicked
                     //rootView.setVisibility(View.INVISIBLE);
                     //rootView.setBackgroundTintMode();
                 }
             });
         }
-            return rootView;
-        }
+        return rootView;
+    }
     public static void dimBehind(PopupWindow popupWindow) {
         View container;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
@@ -122,9 +131,10 @@ public class fragmentInfoParking extends Fragment {
         wm.updateViewLayout(container, p);
     }
 
-    private void showPopup(View view) {
+    private void showPopup(View view, String parkingLotId) {
         // Inflate the popup layout
         View popupView = LayoutInflater.from(getActivity()).inflate(R.layout.comment_popup, null);
+        DatabaseReference commentsRef = FirebaseDatabase.getInstance().getReference().child("parkingLots").child(parkingLotId).child("comments");
 
 
 
@@ -160,6 +170,23 @@ public class fragmentInfoParking extends Fragment {
                 // Do something when the "Finish" button inside the popup is clicked
                 // For example, get the text from the EditText
                 String comment = editText.getText().toString();
+
+                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                // Get current timestamp
+                long timestamp = System.currentTimeMillis();
+
+                // Create a unique key for the comment
+                String commentId = commentsRef.push().getKey();
+
+                // Create a map to store the comment data
+                Map<String, Object> commentMap = new HashMap<>();
+                commentMap.put("userId", userId);
+                commentMap.put("text", comment);
+                commentMap.put("timestamp", timestamp);
+
+                // Write the comment to Firebase
+                commentsRef.child(commentId).setValue(commentMap);
+
                 // Then dismiss the popup window
                 popupWindow.dismiss();
             }
@@ -167,7 +194,9 @@ public class fragmentInfoParking extends Fragment {
     }
 
 
-    public void buttonShowComment(View view) {
+    public void buttonShowComment(View view)
+    {
+
     }
 
 }
