@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.activitys;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,49 +9,49 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 
-public class SignUp extends AppCompatActivity {
+public class SignIn extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_sign_in);
         mAuth = FirebaseAuth.getInstance();
     }
+    public void loginFunc(View view) {
 
-    public void signUpFunc(View view) {
-        String email=((EditText) findViewById(R.id.signup_email)).getText().toString().trim();
-        String password=((EditText) findViewById(R.id.signup_password)).getText().toString().trim();
+        String email=((EditText) findViewById(R.id.login_username)).getText().toString().trim();
+        String password=((EditText) findViewById(R.id.login_password)).getText().toString().trim();
 
-        mAuth.createUserWithEmailAndPassword(email, password)
+        mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
+
+                            Toast.makeText(SignIn.this,"login ok",Toast.LENGTH_LONG).show();
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(SignUp.this,"now you are signed up please sign in",Toast.LENGTH_LONG).show();
-
-                            Intent intent = new Intent(SignUp.this, SignIn.class);
+                            Intent intent = new Intent(SignIn.this, MainActivity.class);
                             startActivity(intent);
-
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(SignUp.this,"something has failed",Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignIn.this,"please try again",Toast.LENGTH_LONG).show();
                         }
                     }
                 });
     }
-    public void hyperlinkSignInFunc(View view) {
-        Intent intent = new Intent(SignUp.this, SignIn.class);
+
+
+    public void hyperlinkSignUpFunc(View view) {
+        Intent intent = new Intent(SignIn.this, SignUp.class);
         startActivity(intent);
     }
-
 }
