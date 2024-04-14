@@ -134,7 +134,7 @@ public class fragmentInfoParking extends Fragment {
     private void showPopup(View view, String parkingLotId) {
         // Inflate the popup layout
         View popupView = LayoutInflater.from(getActivity()).inflate(R.layout.comment_popup, null);
-        DatabaseReference commentsRef = FirebaseDatabase.getInstance().getReference().child("parkingLots").child(parkingLotId).child("comments");
+        //DatabaseReference commentsRef = FirebaseDatabase.getInstance().getReference().child("parkingLots").child(parkingLotId).child("comments");
 
 
 
@@ -164,7 +164,7 @@ public class fragmentInfoParking extends Fragment {
         Button buttonAddComment = popupView.findViewById(R.id.buttonAddComment);
         dimBehind(popupWindow);
         // Example: Handling button click inside the popup
-        buttonAddComment.setOnClickListener(new View.OnClickListener() {
+       /* buttonAddComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Do something when the "Finish" button inside the popup is clicked
@@ -190,7 +190,7 @@ public class fragmentInfoParking extends Fragment {
                 // Then dismiss the popup window
                 popupWindow.dismiss();
             }
-        });
+        });*/
     }
 
 
