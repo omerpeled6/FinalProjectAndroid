@@ -1,4 +1,4 @@
-package com.example.myapplication.activitys;
+package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -59,15 +59,6 @@ public class MainActivity extends AppCompatActivity implements NavigationListene
         }
         return true;
     }
-
-    /*public void navigateToInfoParking(View view) {
-        NavController navController = Navigation.findNavController(view);  // Use the passed view
-        navController.navigate(R.id.action_global_fragmentInfoParking);
-    }
-    public void navigateToInfoParking() {
-        NavController navController = Navigation.findNavController(Objects.requireNonNull(this.getCurrentFocus()));
-        navController.navigate(R.id.action_global_fragmentInfoParking); // Replace with your action ID
-    }*/
 
     @Override
     public void navigateToInfoParking(View v) {

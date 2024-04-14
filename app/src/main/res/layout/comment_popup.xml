@@ -14,15 +14,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textColor="@color/lavender"
-        android:textStyle="bold"
-        android:text="Add comment"
-        android:textSize="36sp" />
+    android:gravity="center"
+    android:textAlignment="center"
+    android:textColor="@color/lavender"
+    android:textStyle="bold"
+    android:text="Add comment"
+    android:textSize="36sp" />
 
     <EditText
-        android:id="@+id/TextComment"
+        android:id="@+id/editTextText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -30,15 +30,15 @@
         android:hint="Add comment"
         android:inputType="text" />
 
-    <Button
-        android:id="@+id/buttonAddComment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:textSize="18sp"
-        android:layout_marginTop="30dp"
-        app:cornerRadius = "20dp"
-        android:onClick="addComment"
-        android:text="Finish" />
 
-</LinearLayout>
+    <Button
+android:id="@+id/buttonAddComment"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:layout_weight="1"
+android:textSize="18sp"
+android:layout_marginTop="30dp"
+app:cornerRadius = "20dp"
+android:text="Finish" />
+
+    </LinearLayout>

@@ -7,6 +7,8 @@ public class ParkingLot {
     private String numOfParks;
     private String numOfDisabled;
 
+    private String parkId;
+
     public String getName() {
         return name;
     }
@@ -28,5 +30,13 @@ public class ParkingLot {
         this.address = address;
         this.numOfParks = numOfParks;
         this.numOfDisabled = numOfDisabled;
+    }
+
+    public String getParkId() {
+        return parkId;
+    }
+
+    public void setParkId(String parkId) {
+        this.parkId = parkId;
     }
 }
